@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+    <script src="calculator.js"></script>
+  </head>
+  <body>
+    <script>
+      YUI().use('test', 'calculator', function(Y) {
+        var testCase = new Y.Test.Case({
+          name: "calculator",
+
+          "adds two numbers": function() {
+            Y.Assert.areEqual(9, Y.calculator.add(5, 4));
+          }
+        });
+        Y.Test.Runner.add(testCase);
+        Y.Test.Runner.run();
+      });
+    </script>
+  </body>
+</html>

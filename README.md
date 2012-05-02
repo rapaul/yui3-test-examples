@@ -1,2 +1,4 @@
-yui3-test-examples
+Examples of YUI3
 ==================
+
+Tests reside in html files

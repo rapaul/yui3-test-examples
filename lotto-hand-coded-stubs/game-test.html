@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+    <script src="game.js"></script>
+  </head>
+  <body>
+    <script>
+      YUI().use('test', 'lotto-game', function(Y) {
+        var testCase = new Y.Test.Case({
+          name: 'Lotto numbers',
+
+          "have 7 numbers": function() {
+            var ballPool = {
+              nextBall: function() { 1 }
+            }
+
+            var numbers = new Y.lotto.Game(ballPool).generate();
+
+            Y.Assert.areEqual(7, numbers.length);
+          }
+        });
+        Y.Test.Runner.add(testCase);
+        Y.Test.Runner.run();
+      });
+    </script>
+  </body>
+</html>

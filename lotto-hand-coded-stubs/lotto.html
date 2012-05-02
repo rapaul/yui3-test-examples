@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+    <script src="game.js"></script>
+    <script src="ball-pool.js"></script>
+    <script src="random-number.js"></script>
+  </head>
+  <body>
+    <div id="winning-numbers"></div>
+    <script>
+      YUI().use('node', 'lotto-game', 'ball-pool', 'random-number', function(Y) {
+        var game = new Y.lotto.Game(new Y.lotto.BallPool(new Y.lotto.RandomNumberGenerator()));
+        var winningNumbers = game.generate();
+        Y.one('#winning-numbers').setContent(winningNumbers.toString());
+      });
+    </script>
+  </body>
+</html>

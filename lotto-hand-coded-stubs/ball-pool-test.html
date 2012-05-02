@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+    <script src="ball-pool.js"></script>
+  </head>
+  <body>
+    <script>
+      YUI().use('test', 'ball-pool', function(Y) {
+        var testCase = new Y.Test.Case({
+          name: 'Ball Pool',
+
+          "balls are removed from the pool once used": function() {
+            var randomNumbers = [1,1,1,2];
+            var randomNumberGenerator = {
+              generateNumber: function() {
+                return randomNumbers.shift();
+              }
+            };
+
+            var ballPool = new Y.lotto.BallPool(randomNumberGenerator);
+
+            var balls = [ballPool.nextBall(), ballPool.nextBall()]
+            Y.ArrayAssert.itemsAreSame([1,2], balls);
+          }
+        });
+        Y.Test.Runner.add(testCase);
+        Y.Test.Runner.run();
+      });
+    </script>
+  </body>
+</html>
